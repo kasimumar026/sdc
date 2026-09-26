@@ -1,0 +1,325 @@
+import { NextRequest, NextResponse } from "next/server";
+import connectDB from "@/connectDB";
+import requireAuth from "@/middlewares/authMiddleware";
+import Wallet from "@/models/walletModel";
+import DataM from "@/models/dataM";
+import Transaction from "@/models/transactionModel";
+import axios from "axios";
+import providerModel from "@/models/providerModel";
+
+type Body = {
+  network?: string;
+  category?: string;
+  planId?: number | string;
+  phone?: string;
+  pin?: string;
+  id?: string;
+  customer_reference?: string;
+};
+
+const buyWithBilalSadaSub = async (data: any) => {
+  // buy data using bilalsada sub
+  try {
+    const token = data?.token;
+    const providerUrl = "https://bilalsadasub.com/api/data";
+    const headers: any = { "Content-Type": "application/json" };
+    headers.Authorization = `Basic ${token}`;
+
+    let network: number | undefined = undefined;
+    const p = (data.plan.provider || "").toLowerCase();
+    if (p === "mtn") network = 1;
+    else if (p === "glo") network = 3;
+    else if (p === "airtel") network = 2;
+    else if (p === "9mobile") network = 4;
+    else network = 4; // default to 3 if unknown
+
+    const providerResponse = (
+      await axios.post(
+        providerUrl,
+        {
+          network,
+          plan: Number(data.plan.externalId),
+          mobile_number: data.phone,
+          customer_reference: data.customer_reference,
+        },
+        { headers },
+      )
+    ).data;
+    const txRef =
+      providerResponse?.txRef ||
+      providerResponse?.reference ||
+      `SIM-DATA-${Date.now()}`;
+    await Transaction.create({
+      userId: data.userId,
+      type: "data",
+      amount: Number(data.plan.amount),
+      txRef,
+      providerResponse,
+      meta: {
+        plan: data?.plan.name,
+        phone: data.phone,
+        provider: data?.plan.provider,
+      },
+      status: "success",
+    });
+  } catch (err: any) {
+    const message = err?.response?.data || err?.message || "Purchase error";
+    // record failed transaction for audit
+    const failRef = `FAIL-DATA-${Date.now()}`;
+    await Transaction.create({
+      userId: data.userId,
+      type: "data",
+      amount: Number(data.plan.amount),
+      txRef: failRef,
+      providerResponse: err?.response?.data || { message },
+      meta: {
+        plan: data?.plan.name,
+        phone: data.phone,
+        provider: data?.plan.provider,
+      },
+      status: "failed",
+    });
+
+    return NextResponse.json(
+      { error: "Provider error", details: message },
+      { status: 502 },
+    );
+  }
+};
+
+const byWithRumahGlobal = async (data: any) => {
+  try {
+    // buy data using sme plug service
+    const token = data?.token;
+    const providerUrl = "https://rumahglobal.com.ng/api/data/";
+    const headers: any = { "Content-Type": "application/json" };
+    headers.Authorization = `Token ${token}`;
+
+    let network_id: number | undefined = undefined;
+    const p = (data.plan.provider || "").toLowerCase();
+    if (p === "mtn") network_id = 1;
+    else if (p === "glo") network_id = 2;
+    else if (p === "airtel") network_id = 4;
+    else if (p === "9mobile") network_id = 3;
+    else network_id = 3; // default to 3 if unknown
+
+    const providerResponse = (
+      await axios.post(
+        providerUrl,
+        {
+          network_id,
+          plan: Number(data.plan.externalId),
+          mobile_number: data.phone,
+          customer_reference: data.customer_reference,
+          Ported_number: false,
+        },
+        { headers },
+      )
+    ).data;
+    const txRef =
+      providerResponse?.txRef ||
+      providerResponse?.reference ||
+      `SIM-DATA-${Date.now()}`;
+    await Transaction.create({
+      userId: data.userId,
+      type: "data",
+      amount: Number(data.plan.amount),
+      txRef,
+      providerResponse,
+      meta: {
+        plan: data?.plan.name,
+        phone: data.phone,
+        provider: data?.plan.provider,
+      },
+      status: "success",
+    });
+  } catch (err: any) {
+    const message = err?.response?.data || err?.message || "Purchase error";
+    // record failed transaction for audit
+    const failRef = `FAIL-DATA-${Date.now()}`;
+    await Transaction.create({
+      userId: data.userId,
+      type: "data",
+      amount: Number(data.plan.amount),
+      txRef: failRef,
+      providerResponse: err?.response?.data || { message },
+      meta: {
+        plan: data?.plan.name,
+        phone: data.phone,
+        provider: data?.plan.provider,
+      },
+      status: "failed",
+    });
+
+    return NextResponse.json(
+      { error: "Provider error", details: message },
+      { status: 502 },
+    );
+  }
+};
+
+const buyWithSMEPlug = async (data: any) => {
+  try {
+    // buy data using rumah global
+    const token = data?.token;
+    const providerUrl = "https://smeplug.ng/api/v1/data/purchase";
+    const headers: any = { "Content-Type": "application/json" };
+    headers.Authorization = `Bearer ${token}`;
+    const custRef = `DATA-${Date.now()}`;
+
+    const providerResponse = (
+      await axios.post(
+        providerUrl,
+        {
+          network_id: 1,
+          plan_id: Number(data.plan.externalId),
+          phone: data.phone,
+          customer_reference: custRef,
+        },
+        { headers },
+      )
+    ).data;
+    const txRef =
+      providerResponse?.txRef ||
+      providerResponse?.reference ||
+      `SIM-DATA-${Date.now()}`;
+    await Transaction.create({
+      userId: data.userId,
+      type: "data",
+      amount: Number(data.plan.amount),
+      txRef,
+      providerResponse,
+      meta: {
+        plan: data?.plan.name,
+        phone: data.phone,
+        provider: data?.plan.provider,
+      },
+      status: "success",
+    });
+  } catch (err: any) {
+    const message = err?.response?.data || err?.message || "Purchase error";
+    // record failed transaction for audit
+    const failRef = `FAIL-DATA-${Date.now()}`;
+    await Transaction.create({
+      userId: data.userId,
+      type: "data",
+      amount: Number(data.plan.amount),
+      txRef: failRef,
+      providerResponse: err?.response?.data || { message },
+      meta: {
+        plan: data?.plan.name,
+        phone: data.phone,
+        provider: data?.plan.provider,
+      },
+      status: "failed",
+    });
+
+    return NextResponse.json(
+      { error: "Provider error", details: message },
+      { status: 502 },
+    );
+  }
+};
+
+export async function POST(request: NextRequest) {
+  try {
+    await connectDB();
+
+    const auth = await requireAuth(request);
+    if (auth instanceof NextResponse) return auth;
+
+    const userId = (auth as any).id?.toString?.() ?? (auth as any).id;
+    if (!userId)
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const body: Body = await request.json().catch(() => ({}) as Body);
+    const { planId, phone, pin, customer_reference, id } = body;
+
+    // minimal validation: require planId, phone and pin
+    if (!planId)
+      return NextResponse.json({ error: "Plan is required" }, { status: 400 });
+    if (!phone)
+      return NextResponse.json(
+        { error: "Phone number is required" },
+        { status: 400 },
+      );
+    if (!pin || String(pin).length !== 4)
+      return NextResponse.json({ error: "Invalid PIN" }, { status: 400 });
+
+    // find plan in database by _id or externalId
+    let plan: any = await DataM.findById(id)
+      // .populate("providerId")
+      .lean();
+    let provider = await providerModel.findById(plan?.providerId);
+
+    if (!plan)
+      return NextResponse.json(
+        { error: "Plan not found", plan },
+        { status: 404 },
+      );
+
+    // load wallet
+    const wallet = await Wallet.findOne({ userId });
+    if (!wallet)
+      return NextResponse.json({ error: "Wallet not found" }, { status: 404 });
+    if (wallet.isLocked)
+      return NextResponse.json({ error: "Wallet is locked" }, { status: 403 });
+    if (String(wallet.pin) !== String(pin))
+      return NextResponse.json(
+        { error: "Invalid wallet PIN" },
+        { status: 401 },
+      );
+
+    // check if wallet has sufficient balance
+    // if (Number(wallet.balance) < amount)
+    //   return NextResponse.json(
+    //     { error: "Insufficient funds" },
+    //     { status: 400 },
+    //   );
+
+    console.log("Provider URL:", provider?.url);
+
+    let providerResponse: any = null;
+
+    switch (provider?.url) {
+      case "https://www.rumahglobal.com.ng":
+        providerResponse = await byWithRumahGlobal({ phone, plan, userId });
+        break;
+
+      case "https://bilalsadasub.com":
+        providerResponse = await buyWithBilalSadaSub({ phone, plan, userId });
+        break;
+
+      case "https://smeplug.com":
+        providerResponse = await buyWithSMEPlug({ phone, plan, userId });
+        break;
+
+      default:
+        break;
+    }
+
+    return NextResponse.json(
+      {
+        message: "Data purchase successful",
+        // provider: providerResponse,
+        providerResponse,
+        phone,
+
+        // txRef,
+      },
+      { status: 200 },
+    );
+  } catch (err: any) {
+    return NextResponse.json(
+      {
+        error: "Failed to purchase data",
+        details: err?.response?.data || err?.message,
+      },
+      { status: 500 },
+    );
+  }
+}
+
+export async function GET() {
+  return NextResponse.json({ message: "Use POST to buy data if you like" });
+}
