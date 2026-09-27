@@ -32,13 +32,13 @@ function ManageBalance() {
     type?: "add" | "subtract";
   }) => {
     return (
-      // if type is subtract, make the button red, else make it teal
+      // if type is subtract, make the button red, else make it primary
       <button
         onClick={() => onSelectAmount(amount)}
         className={`px-4 py-2 rounded-md text-xs m-1 transition ${
           type === "subtract"
             ? "bg-red-700 text-white hover:bg-red-800"
-            : "bg-teal-700 text-white hover:bg-teal-800"
+            : "bg-primary-700 text-white hover:bg-primary-800"
         }`}
       >
         {formatCurrency(amount)}
@@ -83,7 +83,7 @@ function ManageBalance() {
   };
 
   return (
-    <div className="bg-teal-900">
+    <div className="bg-primary-900">
       <main className="w-full md:w-1/2 h-screen bg-white p-4 mx-auto">
         <img src="/white.png" alt="logo" className="w-20 mx-auto" />
         <h1 className="text-2xl font-bold text-center text-primary mb-4">
@@ -91,17 +91,17 @@ function ManageBalance() {
         </h1>
         <p className="text-sm text-slate-500 mb-2">
           Update the balance for{" "}
-          <span className="font-semibold text-teal-700 capitalize">{name}</span>
+          <span className="font-semibold text-primary-700 capitalize">{name}</span>
           .
         </p>
         <p className="text-sm text-slate-500 mb-4">
           Current balance:{" "}
-          <span className="font-semibold text-teal-700">
+          <span className="font-semibold text-primary-700">
             {formatCurrency(Number(walletBalance))}
           </span>
         </p>
 
-        <div className="mb-4 bg-teal-100 p-4 rounded-md">
+        <div className="mb-4 bg-primary-100 p-4 rounded-md">
           <h3>Add Money</h3>
           <div className="flex flex-wrap gap-1">
             <MoneyChip amount={400} type="add" />
@@ -141,7 +141,7 @@ function ManageBalance() {
                 setSelectedAmount(Number(customAmount));
                 setConfirmOpen(true);
               }}
-              className=" px-4 border-none py-2 bg-teal-700 text-white rounded-md hover:bg-teal-800 text-sm"
+              className=" px-4 border-none py-2 bg-primary-700 text-white rounded-md hover:bg-primary-800 text-sm"
             >
               Update
             </button>

@@ -35,7 +35,7 @@ function ForgotPin() {
 
   return (
     <div className="p-4">
-      <h1 className="font-semibold text-2xl text-teal-700 mb-4">Forgot Pin</h1>
+      <h1 className="font-semibold text-2xl text-primary-700 mb-4">Forgot Pin</h1>
 
       <form onSubmit={handleSubmit} className="max-w-md">
         {/* password */}
@@ -64,7 +64,7 @@ function ForgotPin() {
       </form>
 
       {pin && (
-        <div className="mt-4 bg-teal-50 py-5 border border-dotted border-teal-800 rounded-md">
+        <div className="mt-4 bg-primary-50 py-5 border border-dotted border-primary-800 rounded-md">
           <p className="text-lg font-semibold text-center text-gray-700">
             Your Pin: {pin}
           </p>

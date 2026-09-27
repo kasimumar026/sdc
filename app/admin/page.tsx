@@ -131,10 +131,10 @@ export default function AdminPage() {
         </div>
         <div className=" mb-4 grid grid-cols-2 gap-3">
           <Link href="/dashboard">
-            <div className="relative bg-green-50  border-b-2 overflow-hidden border-green-700 shadow-sm rounded-lg  p-6">
-              <BarChart2 className="w-7 h-7 text-teal-700" />
+            <div className="relative bg-primary-50  border-b-2 overflow-hidden border-primary-700 shadow-sm rounded-lg  p-6">
+              <BarChart2 className="w-7 h-7 text-primary-700" />
 
-              <h1 className="text-sm font-bold text-teal-700 my-2">
+              <h1 className="text-sm font-bold text-primary-700 my-2">
                 Dashboard
               </h1>
 
@@ -229,10 +229,10 @@ export default function AdminPage() {
 
           {/* Providers */}
           <Link href="/admin/providers">
-            <div className="relative bg-teal-50  border-b-2 overflow-hidden border-teal-700 shadow-sm rounded-lg  p-6">
-              <FileText className="w-7 h-7 text-teal-700" />
+            <div className="relative bg-primary-50  border-b-2 overflow-hidden border-primary-700 shadow-sm rounded-lg  p-6">
+              <FileText className="w-7 h-7 text-primary-700" />
 
-              <h1 className="text-sm font-bold text-teal-700 my-2">
+              <h1 className="text-sm font-bold text-primary-700 my-2">
                 Providers
               </h1>
 

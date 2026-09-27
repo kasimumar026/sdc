@@ -94,7 +94,7 @@ export default function AllServicesPage() {
                 {/* Square Icon Container */}
                 <div className="w-[76px] h-[76px] bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.03)] border border-slate-50 flex items-center justify-center transition-all duration-200 group-hover:scale-105 group-hover:shadow-md">
                   <IconComponent 
-                    className="w-7 h-7 text-[#1A237E]" // Royal deep blue accent matching the screenshot
+                    className="w-7 h-7 text-primary"
                     strokeWidth={1.8} 
                   />
                 </div>

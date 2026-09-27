@@ -48,7 +48,7 @@ export default function Airtime2CashPage() {
         {success && <div className="text-foreground text-sm">{success}</div>}
 
         <div className="flex items-center gap-3">
-          <Button type="submit" className="bg-emerald-600 text-white" disabled={loading}>{loading ? "Processing..." : "Convert"}</Button>
+          <Button type="submit" className="bg-primary text-primary-foreground" disabled={loading}>{loading ? "Processing..." : "Convert"}</Button>
           <Link href="/dashboard"><Button variant="ghost">Back</Button></Link>
         </div>
       </form>

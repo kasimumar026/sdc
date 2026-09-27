@@ -6,7 +6,9 @@
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:dataplans": "node scripts/seed-dataplans.js",
+    "clear:tokens": "node scripts/clear-dataplan-tokens.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

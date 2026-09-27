@@ -254,7 +254,7 @@ export default function BuyAirtimePage() {
         <Link href="/dashboard" className="text-slate-700">
           <ArrowLeft className="w-6 h-6" />
         </Link>
-        <h1 className="text-xl font-bold text-teal-800">Airtime TopUp</h1>
+        <h1 className="text-xl font-bold text-primary-800">Airtime TopUp</h1>
         <button className="text-slate-700">
           <Clock className="w-6 h-6" />
         </button>
@@ -315,7 +315,7 @@ export default function BuyAirtimePage() {
                           onClick={() => setFieldValue("purchaseType", type)}
                           className={`py-3 rounded-xl font-bold text-base text-sm border transition-all text-center uppercase ${
                             isActive
-                              ? "bg-teal-800 text-white border-teal-800" // Deep dark blue matched perfectly
+                              ? "bg-primary-800 text-white border-primary-800"
                               : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
                           }`}
                         >
@@ -340,7 +340,7 @@ export default function BuyAirtimePage() {
                       className="w-full bg-transparent border-none text-base placeholder-slate-400 focus-visible:ring-0 pl-3 h-10 pr-12"
                     />
                     <div className="absolute right-4 text-slate-400">
-                      <svg className="w-6 h-6 text-[#1A237E]" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm5.25-4H6.75V5h10.5v11z"/>
                       </svg>
                     </div>
@@ -371,7 +371,7 @@ export default function BuyAirtimePage() {
                   
                   {/* Embedded dynamic discount label */}
                   {selectedAmount > 0 && (
-                    <div className="mt-2 text-xs text-emerald-600 font-semibold pl-1">
+                    <div className="mt-2 text-xs text-primary-600 font-semibold pl-1">
                       Pays ₦{new Intl.NumberFormat("en-NG").format(selectedAmount * 0.98)} after 2% discount
                     </div>
                   )}
@@ -385,7 +385,8 @@ export default function BuyAirtimePage() {
                     onClick={() => setShowPinModal(true)}
                     className="w-full py-3 rounded-2xl font-bold bg-[#A0AEC0] text-white hover:bg-slate-500 transition-all text-center text-[15px]"
                     style={{
-                      backgroundColor: values.phone && values.amount ? "teal" : "#A0AEC0"
+                      backgroundColor:
+                        values.phone && values.amount ? "var(--primary)" : "#A0AEC0"
                     }}
                   >
                     Proceed to Pay
@@ -422,7 +423,7 @@ export default function BuyAirtimePage() {
                       <button
                         type="submit"
                         disabled={isSubmitting || values.pin.length < 4}
-                        className="flex-1 py-2 text-sm font-bold bg-teal-800 text-white rounded-xl disabled:opacity-50"
+                        className="flex-1 py-2 text-sm font-bold bg-primary-800 text-white rounded-xl disabled:opacity-50"
                       >
                         {isSubmitting ? "Paying..." : "Verify & Buy"}
                       </button>

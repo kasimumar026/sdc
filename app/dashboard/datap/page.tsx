@@ -194,14 +194,14 @@ export default function BuyDataPage() {
       {/* model */}
       <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
         <DialogContent className="sm:max-w-md rounded-2xl p-0 overflow-hidden">
-          <div className="bg-gradient-to-r from-teal-500 to-teal-800 p-8 text-white flex flex-col items-center">
+          <div className="bg-gradient-to-r from-primary-500 to-primary-800 p-8 text-white flex flex-col items-center">
             <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center">
               <CheckCircle2 className="w-12 h-12" />
             </div>
 
             <h2 className="text-2xl font-bold mt-5">Purchase Successful</h2>
 
-            <p className="text-green-100 text-center mt-2">
+            <p className="text-primary-100 text-center mt-2">
               Your data bundle has been delivered successfully.
             </p>
           </div>
@@ -209,26 +209,26 @@ export default function BuyDataPage() {
           <div className="p-6 space-y-4">
             <div className="flex justify-between">
               <span className="text-slate-500">Phone Number</span>
-              <span className="font-semibold text-teal-800">
+              <span className="font-semibold text-primary-800">
                 {purchaseData?.phone}
               </span>
             </div>
 
             {/* <div className="flex justify-between">
               <span className="text-slate-500">Network</span>
-              <span className="font-semibold text-teal-800">MTN</span>
+              <span className="font-semibold text-primary-800">MTN</span>
             </div> */}
 
             <div className="flex justify-between">
               <span className="text-slate-500">Message</span>
-              <span className="font-semibold text-teal-800">
+              <span className="font-semibold text-primary-800">
                 {purchaseData?.message}
               </span>
             </div>
 
             <div className="flex justify-between">
               <span className="text-slate-500">Amount</span>
-              <span className="font-semibold text-teal-800">
+              <span className="font-semibold text-primary-800">
                 ₦{purchaseData?.amount}
               </span>
             </div>
@@ -350,7 +350,7 @@ export default function BuyDataPage() {
                 </div>
 
                 {networkTitle && (
-                  <div className=" text-xs text-green-500 mb-1">
+                  <div className=" text-xs text-primary-500 mb-1">
                     <span className="font-bold">{networkTitle}</span>
                   </div>
                 )}
@@ -425,7 +425,7 @@ export default function BuyDataPage() {
                             </div>
 
                             <div>
-                              <div className="font-bold text-teal-800 text-sm">
+                              <div className="font-bold text-primary-800 text-sm">
                                 {p.name || "Data Plan"}
                               </div>
                               <div className="text-[10px] text-slate-400 uppercase font-medium tracking-tight">

@@ -49,7 +49,7 @@ function DataSpecial() {
           onClick={() => setData(1)}
           className={
             data === 1
-              ? "p-4 bg-gradient-to-r from-teal-600 to-primary rounded h-24 text-white flex items-center justify-center text-center"
+              ? "p-4 bg-gradient-to-r from-primary-600 to-primary rounded h-24 text-white flex items-center justify-center text-center"
               : "p-4 bg-gradient-to-r from-slate-100 to-zinc-100 rounded h-24 text-primary flex items-center justify-center text-center"
           }
         >
@@ -60,7 +60,7 @@ function DataSpecial() {
           onClick={() => setData(2)}
           className={
             data === 2
-              ? "p-4 bg-gradient-to-r from-teal-600 to-primary rounded h-24 text-white flex items-center justify-center text-center"
+              ? "p-4 bg-gradient-to-r from-primary-600 to-primary rounded h-24 text-white flex items-center justify-center text-center"
               : "p-4 bg-gradient-to-r from-slate-100 to-zinc-100 rounded h-24 text-primary flex items-center justify-center text-center"
           }
         >

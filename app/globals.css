@@ -47,6 +47,19 @@
   --color-gradient-from: var(--gradient-from);
   --color-gradient-to: var(--gradient-to);
 
+  /* Primary scale */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  --color-primary-950: var(--primary-950);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -79,26 +92,38 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.03 270);
 
-  /* Brand Colors (Blue → Cyan) */
-  /* Brand Colors (Custom theme) */
-  --primary: #01272c;              /* Deep navy */
+  /* Brand Colors (Dark Blue) */
+  --primary: #12386b;              /* Deep dark blue */
   --primary-foreground: #ffffff;
 
-  --secondary: #3a506b;            /* Muted blue */
+  /* Primary scale (dark blue) */
+  --primary-50: #eff4fb;
+  --primary-100: #dbe7f5;
+  --primary-200: #b9cdea;
+  --primary-300: #8daad4;
+  --primary-400: #5c82b8;
+  --primary-500: #3c6397;
+  --primary-600: #2c4c79;
+  --primary-700: #12386b;
+  --primary-800: #0f2c55;
+  --primary-900: #0b203d;
+  --primary-950: #071426;
+
+  --secondary: #2c4c79;            /* Mid blue */
   --secondary-foreground: #ffffff;
 
-  --accent: #3a506b;               /* Use secondary as accent */
+  --accent: #2c4c79;               /* Use secondary as accent */
   --accent-foreground: #ffffff;
 
   --muted: oklch(0.95 0.01 260);
   --muted-foreground: oklch(0.55 0.04 270);
 
   /* Gradient */
-  --gradient-from: #01272c;
-  --gradient-to: #3a506b;
+  --gradient-from: #12386b;
+  --gradient-to: #2c4c79;
 
   /* Actions */
-  --ring: #01272c;                 /* Primary focus ring */
+  --ring: #12386b;                 /* Primary focus ring */
   --destructive: oklch(0.6 0.24 27);
 
   /* Borders & Inputs */
@@ -106,12 +131,12 @@
   --input: oklch(0.9 0.01 260);
   --sidebar: hsl(210 40% 98%);
   --sidebar-foreground: hsl(220 15% 18%);
-  --sidebar-primary: #01272c;
+  --sidebar-primary: #12386b;
   --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: #f6f8fb;
-  --sidebar-accent-foreground: #3a506b;
+  --sidebar-accent: #eef3fa;
+  --sidebar-accent-foreground: #2c4c79;
   --sidebar-border: hsl(210 20% 92%);
-  --sidebar-ring: #3a506b;
+  --sidebar-ring: #2c4c79;
 }
 
 /* ================= */
@@ -128,25 +153,36 @@
   --popover: oklch(0.22 0.05 300);
   --popover-foreground: oklch(0.99 0.003 250);
 
-  --primary: oklch(0.68 0.25 350);              /* Brighter Pink */
-  --primary: #01272c;
+  --primary: #3c6397;
   --primary-foreground: oklch(0.99 0.003 250);
 
-  --secondary: #3a506b;
+  --primary-50: #0b203d;
+  --primary-100: #0f2c55;
+  --primary-200: #12386b;
+  --primary-300: #2c4c79;
+  --primary-400: #3c6397;
+  --primary-500: #5c82b8;
+  --primary-600: #8daad4;
+  --primary-700: #b9cdea;
+  --primary-800: #dbe7f5;
+  --primary-900: #eff4fb;
+  --primary-950: #f6f9fd;
+
+  --secondary: #5c82b8;
   --secondary-foreground: oklch(0.99 0.003 250);
 
-  --accent: #3a506b;
+  --accent: #5c82b8;
   --accent-foreground: oklch(0.99 0.003 250);
 
   --muted: oklch(0.28 0.05 300);
   --muted-foreground: oklch(0.7 0.04 270);
 
-  --gradient-from: #01272c;
-  --gradient-to: #3a506b;
+  --gradient-from: #0b203d;
+  --gradient-to: #12386b;
 
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 18%);
-  --ring: #3a506b;
+  --ring: #5c82b8;
 
   --destructive: oklch(0.65 0.22 27);
 
@@ -154,17 +190,17 @@
 
   --sidebar-foreground: hsl(240 4.8% 95.9%);
 
-  --sidebar-primary: #01272c;
+  --sidebar-primary: #3c6397;
 
   --sidebar-primary-foreground: hsl(0 0% 100%);
 
-  --sidebar-accent: #1f2b38;
+  --sidebar-accent: #16263d;
 
   --sidebar-accent-foreground: hsl(0 0% 100%);
 
-  --sidebar-border: #16202a;
+  --sidebar-border: #1c2c44;
 
-  --sidebar-ring: #3a506b;
+  --sidebar-ring: #5c82b8;
 }
 
 /* ================= */

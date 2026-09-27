@@ -52,8 +52,8 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-green-100 rounded-md">
-                  <MessageSquare className="w-5 h-5 text-green-600" />
+                <div className="p-3 bg-primary-100 rounded-md">
+                  <MessageSquare className="w-5 h-5 text-primary-700" />
                 </div>
                 <div>
                   <div className="text-sm text-slate-500">WhatsApp</div>

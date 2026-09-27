@@ -51,13 +51,13 @@ function ProviderDetails() {
       </Button>
       <div className="bg-white p-6 rounded shadow">
         <h1 className="text-2xl font-semibold mb-2">{provider.name}</h1>
-        <p className="text-sm text-green-700 mb-4">{provider.url}</p>
+        <p className="text-sm text-primary-700 mb-4">{provider.url}</p>
         <p className="text-sm text-gray-700 mb-4">
           Service: {provider.service}
         </p>
 
         {/* networks ids */}
-        <div className="py-5 bg-green-50 px-5 mb-4">
+        <div className="py-5 bg-primary-50 px-5 mb-4">
           <p className="text-sm text-gray-700 mb-1">Network IDs:</p>
           <ul className="list-disc list-inside text-sm text-gray-700">
             <li>

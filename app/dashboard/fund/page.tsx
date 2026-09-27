@@ -145,7 +145,7 @@ export default function FundWalletPage() {
         <CopyToClipboard text={textToCopy} onCopy={() => {}}>
           <section>
             <div className="md:col-span-2 space-y-4">
-              <div className="bg-gradient-to-r from-primary to-teal-800 text-white p-6 rounded-lg shadow-lg relative overflow-hidden">
+              <div className="bg-gradient-to-r from-primary to-primary-800 text-white p-6 rounded-lg shadow-lg relative overflow-hidden">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="text-sm opacity-90">

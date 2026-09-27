@@ -181,7 +181,7 @@ function DashClient() {
         <header className="rounded-2xl py-1 mb-4 px-2 flex items-center gap-4 ">
           <Link href="/dashboard/account">
             <div className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center">
-              <User className="w-6 h-6 text-teal-800400" />
+              <User className="w-6 h-6 text-primary-700" />
             </div>
           </Link>
 
@@ -209,7 +209,7 @@ function DashClient() {
             </div>
           </Link>
         </header>
-        <div className="relative overflow-hidden rounded-2xl py-3 px-2 text-white shadow-xl bg-gradient-to-r from-primary to-teal-800">
+        <div className="relative overflow-hidden rounded-2xl py-3 px-2 text-white shadow-xl bg-gradient-to-r from-primary to-primary-800">
           {/* // end bubbles */}
           <div className="p-4 sm:p-6 md:p-8">
             <div className="flex flex-col  gap-4">
@@ -251,8 +251,8 @@ function DashClient() {
                 {/* On mobile, show smaller pill button */}
                 <Link href="/dashboard/fund">
                   <div className="w-44 h-12 rounded-sm bg-white flex items-center px-2">
-                    <PlusIcon className="w-5 h-5  text-teal-800 mr-2" />
-                    <p className="text-center text-md text-teal-800 font-semibold mt-1 ">
+                    <PlusIcon className="w-5 h-5  text-primary-800 mr-2" />
+                    <p className="text-center text-md text-primary-800 font-semibold mt-1 ">
                       FUND WALLET
                     </p>
                   </div>
@@ -260,7 +260,7 @@ function DashClient() {
 
                 <Link href="#">
                   <div className="w-24 h-12 rounded-sm flex items-center px-2 justify-center">
-                    <PlusIcon className="w-5 h-5  text-teal-800 mr-2" />
+                    <PlusIcon className="w-5 h-5  text-primary-800 mr-2" />
                     <p className="text-center text-md text-white font-semibold mt-1 ">
                       GIFT
                     </p>
@@ -313,11 +313,11 @@ function DashClient() {
                     role="button"
                     tabIndex={0}
                     aria-label={s.title}
-                    className="w-14 h-14 rounded-full bg-gradient-to-r from-white to-teal-50 flex items-center justify-center text-teal-800 shadow-md transition-transform duration-200 group-hover:scale-105"
+                    className="w-14 h-14 rounded-full bg-gradient-to-r from-white to-primary-50 flex items-center justify-center text-primary-800 shadow-md transition-transform duration-200 group-hover:scale-105"
                   >
                     {/* Icons use currentColor so they inherit the white color */}
                     {s.key === "datap" && (
-                      <Wifi className="w-6 h-6 text-teal-800" />
+                      <Wifi className="w-6 h-6 text-primary-800" />
                     )}
 
                     {s.key === "airtime" && (
@@ -326,7 +326,7 @@ function DashClient() {
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
-                        className="w-6 h-6 text-teal-800"
+                        className="w-6 h-6 text-primary-800"
                       >
                         <path
                           d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.12 1.01.37 2 .74 2.94a2 2 0 0 1-.45 2.11L9 10a12 12 0 0 0 6 6l1.22-1.22a2 2 0 0 1 2.11-.45c.94.37 1.93.62 2.94.74A2 2 0 0 1 22 16.92z"
@@ -344,7 +344,7 @@ function DashClient() {
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
-                        className="w-6 h-6 text-teal-800"
+                        className="w-6 h-6 text-primary-800"
                       >
                         <path
                           d="M12 8v8"
@@ -374,7 +374,7 @@ function DashClient() {
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
-                        className="w-6 h-6 text-teal-800"
+                        className="w-6 h-6 text-primary-800"
                       >
                         <path
                           d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"
@@ -392,7 +392,7 @@ function DashClient() {
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
-                        className="w-6 h-6 text-teal-800"
+                        className="w-6 h-6 text-primary-800"
                       >
                         <rect
                           x="3"
@@ -421,7 +421,7 @@ function DashClient() {
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
-                        className="w-6 h-6 text-teal-800"
+                        className="w-6 h-6 text-primary-800"
                       >
                         <rect
                           x="3"
@@ -443,19 +443,19 @@ function DashClient() {
                     )}
 
                     {s.key === "more" && (
-                      <LayoutDashboard className="w-6 h-6 text-teal-800" />
+                      <LayoutDashboard className="w-6 h-6 text-primary-800" />
                     )}
 
                     {s.key === "contact" && (
-                      <Headset className="w-6 h-6 text-teal-800" />
+                      <Headset className="w-6 h-6 text-primary-800" />
                     )}
 
                     {s.key === "ussd" && (
-                      <Hash className="w-6 h-6 text-teal-800" />
+                      <Hash className="w-6 h-6 text-primary-800" />
                     )}
                   </div>
 
-                  <div className="text-xs md:text-sm font-semibold text-teal-800 mt-2">
+                  <div className="text-xs md:text-sm font-semibold text-primary-800 mt-2">
                     {s.title}
                   </div>
                 </div>

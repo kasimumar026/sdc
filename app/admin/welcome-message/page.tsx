@@ -52,7 +52,7 @@ function WelcomeMessage() {
         <img src="/white.png" className="w-10" alt="" />
 
         <Link href="/admin">
-          <button className="bg-gray-100 text-teal-600 px-4 py-2 text-sm rounded-lg font-bold">
+          <button className="bg-gray-100 text-primary-600 px-4 py-2 text-sm rounded-lg font-bold">
             Back
           </button>
         </Link>
@@ -75,7 +75,7 @@ function WelcomeMessage() {
           />
           <button
             type="submit"
-            className="bg-teal-600 text-white px-4 py-2 text-sm rounded-lg font-bold hover:bg-teal-700"
+            className="bg-primary-600 text-white px-4 py-2 text-sm rounded-lg font-bold hover:bg-primary-700"
           >
             Save Message
           </button>

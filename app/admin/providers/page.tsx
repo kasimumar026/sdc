@@ -109,7 +109,7 @@ function Providers() {
       </h1>
       <button
         onClick={() => setOpen(true)}
-        className="w-full bg-primary text-teal-100 py-2.5 active:bg-primary/70 rounded-md text-sm"
+        className="w-full bg-primary text-primary-100 py-2.5 active:bg-primary/70 rounded-md text-sm"
       >
         Link New Provider
       </button>
