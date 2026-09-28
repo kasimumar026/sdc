@@ -53,7 +53,7 @@ export function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button size="lg" asChild className="h-12 rounded-xl text-base">
-              <Link href="/">
+              <Link href="/auth/login">
                 Get started
                 <ArrowRight className="size-4" />
               </Link>

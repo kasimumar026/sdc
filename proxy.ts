@@ -13,21 +13,20 @@ export async function proxy(req: CustomNextRequest) {
   if (!token) {
     if (req.nextUrl.pathname.startsWith("/dashboard")) {
       // redirect to home page
-      return NextResponse.redirect(new URL("/", req.url));
+      return NextResponse.redirect(new URL("/auth/login", req.url));
     }
 
     if (req.nextUrl.pathname === "/admin") {
       // redirect to home page, admin page should not be accessible without token
-      return NextResponse.redirect(new URL("/", req.url));
+      return NextResponse.redirect(new URL("/auth/login", req.url));
     }
   }
 
   try {
     const decoded: any = await verifyJwt(token);
-    console.log("decoded token:", decoded);
 
     if (decoded) {
-      if (req.nextUrl.pathname === "/") {
+      if (req.nextUrl.pathname === "/auth/login") {
         // if admin redirect to admin
         if (decoded.role === "admin") {
           return NextResponse.redirect(new URL("/admin", req.url));
@@ -59,7 +58,7 @@ export async function proxy(req: CustomNextRequest) {
           );
         }
 
-        return NextResponse.redirect(new URL("/", req.url));
+        return NextResponse.redirect(new URL("/auth/login", req.url));
       }
     }
   } catch (error) {}

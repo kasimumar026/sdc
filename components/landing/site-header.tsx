@@ -26,13 +26,11 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center gap-2.5">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <Zap className="size-5" />
-          </span>
+        <Link href="#home" className="flex items-center gap-0">
+          <img src="/white.png" className="w-24" alt="" />
           <span className="text-lg font-bold tracking-tight text-foreground">
             SDC{" "}
-            <span className="font-medium text-muted-foreground">Smart Data</span>
+            <span className="font-medium text-muted-foreground">SDC Smart Data</span>
           </span>
         </Link>
 
@@ -50,10 +48,10 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Button variant="ghost" asChild>
-            <Link href="/">Sign in</Link>
+            <Link href="/auth/login">Sign in</Link>
           </Button>
           <Button asChild>
-            <Link href="/">Get started</Link>
+            <Link href="/auth/login">Get started</Link>
           </Button>
         </div>
 
@@ -83,10 +81,10 @@ export function SiteHeader() {
             ))}
             <div className="flex gap-2 pt-3">
               <Button variant="outline" asChild className="flex-1">
-                <Link href="/">Sign in</Link>
+                <Link href="/auth/login">Sign in</Link>
               </Button>
               <Button asChild className="flex-1">
-                <Link href="/">Get started</Link>
+                <Link href="/auth/login">Get started</Link>
               </Button>
             </div>
             <a
