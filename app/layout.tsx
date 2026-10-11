@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
+import InstallPrompt from "./InstallPrompt";
 
 export const metadata: Metadata = {
   title: "SDC Smart Data Subscription",
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased font-sans">
         {children}
+        <InstallPrompt />
         <ToastContainer
           position="top-center"
           autoClose={1500}

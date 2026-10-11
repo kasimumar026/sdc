@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       name: user.name,
       phoneNumber: user.phone,
       bankCode: ["20946", "20897"],
-      businessId: "61deb6a83e1949bdbd9e07bad04c8ad28f25cb08",
+      businessId: "2a9b83cbc8ccb272a5c146ee0e2126ca86b1e706",
     };
 
     try {
@@ -55,9 +55,9 @@ export async function POST(request: NextRequest) {
         data,
         {
           headers: {
-            Authorization: `Bearer 2966ade1df32998469c029ec9b5c3a76a445c22ff93cf1a3ae9f272581c063e82564275e0fe1d719ea6606f87eb4ac7ad5f8ca11c75ab1ec35b3c53a`,
+            Authorization: `Bearer cd9ba577cf045d511d436e59e0e3c6b94f7f79d668f6f02bb1567dce464359a2b54710b71bc85bb277ee812ba4ffc4e1fd0164b5c3de1808c32888ae`,
             "Content-Type": "application/json",
-            "api-key": "defd8445a9c0d8761252c055105b71aa5bdea98d"
+            "api-key": "699cd2e86272ce9cfea562325957c85d0a5f1788"
           },
         }
       );

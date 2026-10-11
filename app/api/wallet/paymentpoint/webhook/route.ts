@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing signature" }, { status: 401 });
     }
 
-    const PAYMENTPOINT_SECRET = process.env.PAYMENTPOINT_SECRET || "2966ade1df32998469c029ec9b5c3a76a445c22ff93cf1a3ae9f272581c063e82564275e0fe1d719ea6606f87eb4ac7ad5f8ca11c75ab1ec35b3c53a";
+    const PAYMENTPOINT_SECRET = process.env.PAYMENTPOINT_SECRET || "cd9ba577cf045d511d436e59e0e3c6b94f7f79d668f6f02bb1567dce464359a2b54710b71bc85bb277ee812ba4ffc4e1fd0164b5c3de1808c32888ae";
     // compute both hex and base64 representations to tolerate provider differences
     const hmacHex = crypto.createHmac("sha256", PAYMENTPOINT_SECRET).update(raw).digest("hex");
     const hmacBase64 = crypto.createHmac("sha256", PAYMENTPOINT_SECRET).update(raw).digest("base64");
