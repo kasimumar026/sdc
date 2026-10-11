@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+const hamza: any = 0;
 const url = "mongodb+srv://hahmad1178_db_user:STYnMQDBVX2jEjP@yaahazacluster.yd4dtyk.mongodb.net/sdcsmartdata?retryWrites=true&w=majority&appName=YaahazaCluster";
 
 if (!url) {
