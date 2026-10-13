@@ -42,7 +42,7 @@ function acknowledge() {
 }
 
 export async function POST(request: NextRequest) {
-  const secret = process.env.BILLSTACK_KEY;
+  const secret = "Bill_Stack-SEC-KEY-bb32d2a02a698a8aea02a1166bd9d2fd";
   if (!secret) {
     console.error("Billstack webhook secret is not configured");
     return NextResponse.json(

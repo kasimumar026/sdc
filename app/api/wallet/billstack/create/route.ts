@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const billstackKey = process.env.BILLSTACK_KEY;
+    const billstackKey = "Bill_Stack-SEC-KEY-bb32d2a02a698a8aea02a1166bd9d2fd";
     if (!billstackKey) {
       return NextResponse.json(
         { message: "Virtual account service is not configured" },
