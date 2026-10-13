@@ -2,21 +2,16 @@
 import React, { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-  FieldSeparator,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Form, Formik } from "formik";
-import {
-  loginValidationSchema,
-  registerValidationSchema,
-} from "@/helpers/validations";
+import { registerValidationSchema } from "@/helpers/validations";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -30,20 +25,22 @@ function RegisterClient({ className, ...props }: React.ComponentProps<"div">) {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handleRegister = async (values: any) => {
-    const response: any = await ApiClient.post("register", {
-      email: values.email,
-      password: values.password,
-      phone: values.phone,
-      name: values.name,
-    })
-      .then(function (resData) {
-        toast.success("Successfully");
-        router.push("/auth/create-wallet");
-      })
-      .catch(function (error) {
-        console.log(error);
-        toast.error(error?.response?.data?.error);
+    try {
+      await ApiClient.post("register", {
+        email: values.email,
+        password: values.password,
+        phone: values.phone,
+        name: values.name,
       });
+      toast.success("Account created. Set up your wallet to continue.");
+      router.push("/auth/create-wallet");
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.message ||
+          error?.response?.data?.error ||
+          "Registration failed. Please try again.",
+      );
+    }
   };
   return (
     <div className={cn("flex flex-col gap-2", className)} {...props}>
@@ -76,7 +73,7 @@ function RegisterClient({ className, ...props }: React.ComponentProps<"div">) {
                     {/* <span className="text-2xl font-semibold text-primary">
                        Data Sub
                     </span> */}
-                    <img alt="logo" src='/white.png' className="w-20"/>
+                    <img alt="logo" src="/white.png" className="w-20" />
 
                     <p className="text-muted-foreground text-balance mb-0">
                       Register a new <span className="font-bold text-primary">SDC Smart Data account</span>

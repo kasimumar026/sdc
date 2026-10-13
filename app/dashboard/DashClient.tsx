@@ -175,127 +175,120 @@ function DashClient() {
   };
 
   return (
-    <main className="px-3 py-5 bg-gray-50 min-h-screen">
-      {/* Card */}
-      <section className=" mx-auto relative overflow-hidden">
-        <header className="rounded-2xl py-1 mb-4 px-2 flex items-center gap-4 ">
-          <Link href="/dashboard/account">
-            <div className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center">
-              <User className="w-6 h-6 text-primary-700" />
+    <main className="min-h-screen bg-background px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <section className="relative mb-8 overflow-hidden rounded-3xl border border-border bg-card p-4 shadow-sm sm:mb-10 sm:p-6">
+          <header className="flex items-center gap-3 sm:gap-4">
+            <Link
+              href="/dashboard/account"
+              aria-label="Open account settings"
+              className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-border bg-background text-primary shadow-sm transition hover:bg-primary/5"
+            >
+              <User className="size-5" />
+            </Link>
+
+            <div className="min-w-0 flex-1">
+              <p className="text-sm text-muted-foreground">
+                Good{" "}
+                {new Date().getHours() < 12
+                  ? "morning"
+                  : new Date().getHours() < 18
+                    ? "afternoon"
+                    : "evening"}
+                ,
+              </p>
+              <h1 className="truncate text-xl font-bold capitalize tracking-tight text-foreground sm:text-2xl">
+                {data?.user?.name.split(" ")[0] || "Welcome"}
+              </h1>
             </div>
-          </Link>
 
-          <div className="flex-1">
-            <p>
-              Good{" "}
-              {new Date().getHours() < 12
-                ? "Morning"
-                : new Date().getHours() < 18
-                  ? "Afternoon"
-                  : "Evening"}
-              ,
-            </p>
-            <h1 className="capitalize font-bold text-2xl">
-              {data?.user?.name.split(" ")[0] || ""}
-            </h1>
-          </div>
+            <Link
+              href="/dashboard/transactions"
+              aria-label="View transactions"
+              title="Transactions"
+              className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-border bg-background text-primary transition hover:bg-primary/5"
+            >
+              <History className="size-5" />
+            </Link>
+          </header>
 
-          <Link
-            href="/dashboard/transactions"
-            className=" flex flex-col gap-1 items-center "
-          >
-            <div className="w-12 h-12 rounded-full bg-blue-200 flex items-center justify-center">
-              <History className="w-5 h-5 m-auto text-blue-700" />
-            </div>
-          </Link>
-        </header>
-        <div className="relative overflow-hidden rounded-2xl py-3 px-2 text-white shadow-xl bg-gradient-to-r from-primary to-primary-800">
-          {/* // end bubbles */}
-          <div className="p-4 sm:p-6 md:p-8">
-            <div className="flex flex-col  gap-4">
-              {/* logo */}
-
-              <div className="flex-1">
-                <div className="flex items-center gap-2">
-                  <p className="text-sm opacity-90">Total Balance</p>
+          <div className="relative isolate mt-5 overflow-hidden rounded-2xl bg-gradient-to-br from-slate-950 via-[#12386b] to-[#285c9b] p-5 text-white sm:mt-6 sm:p-8 lg:p-9">
+            <div className="absolute -right-20 -top-28 -z-10 size-80 rounded-full border border-white/10" />
+            <div className="absolute -right-5 -top-16 -z-10 size-56 rounded-full border border-white/10" />
+            <div className="relative flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2 text-sm font-medium text-blue-100/80">
+                  <span>Total balance</span>
                   <button
                     aria-label={showBalance ? "Hide balance" : "Show balance"}
                     onClick={toggleShowBalance}
-                    className="p-1 rounded hover:bg-white/10 transition"
+                    className="rounded-lg p-1.5 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                     title={showBalance ? "Hide balance" : "Show balance"}
                   >
                     {showBalance ? (
-                      <Eye className="w-4 h-4" />
+                      <Eye className="size-4" />
                     ) : (
-                      <EyeOff className="w-4 h-4" />
+                      <EyeOff className="size-4" />
                     )}
                   </button>
                 </div>
 
-                <div className="mt-2 text-2xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+                <div className="mt-2 break-words text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                   {loading ? (
-                    <span className="inline-block w-32 h-8 bg-white/20 rounded animate-pulse" />
+                    <span className="inline-block h-10 w-36 animate-pulse rounded-lg bg-white/15" />
                   ) : data?.wallet?.balance != null ? (
                     showBalance ? (
                       formatCurrency(data.wallet.balance)
                     ) : (
-                      <span className="tracking-widest">•••••</span>
+                      <span className="tracking-[0.22em]">••••••</span>
                     )
                   ) : (
                     "—"
                   )}
                 </div>
+                <p className="mt-2 text-xs text-blue-100/65">Available in your wallet</p>
               </div>
 
-              <div className="flex items-center justify-around mt-2 gap-3 ">
-                {/* On mobile, show smaller pill button */}
-                <Link href="/dashboard/fund">
-                  <div className="w-44 h-12 rounded-sm bg-white flex items-center px-2">
-                    <PlusIcon className="w-5 h-5  text-primary-800 mr-2" />
-                    <p className="text-center text-md text-primary-800 font-semibold mt-1 ">
-                      FUND WALLET
-                    </p>
-                  </div>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/dashboard/fund"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-primary shadow-sm transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                >
+                  <PlusIcon className="size-4" />
+                  Fund wallet
                 </Link>
 
-                <Link href="#">
-                  <div className="w-24 h-12 rounded-sm flex items-center px-2 justify-center">
-                    <PlusIcon className="w-5 h-5  text-primary-800 mr-2" />
-                    <p className="text-center text-md text-white font-semibold mt-1 ">
-                      GIFT
-                    </p>
-                  </div>
+                <Link
+                  href="#"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+                >
+                  <PlusIcon className="size-4" />
+                  Gift
                 </Link>
               </div>
             </div>
-
-            {/* subtle decorative svg in corner (smaller on mobile) */}
-            <svg
-              className="absolute right-0 top-0 -mr-8 -mt-8 w-36 h-36 opacity-18 pointer-events-none"
-              viewBox="0 0 100 100"
-              fill="none"
-              aria-hidden
-            >
-              <circle cx="50" cy="50" r="50" fill="rgba(255,255,255,0.16)" />
-            </svg>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* rest of dashboard cards */}
       {/* Quick Actions grid (icons in primary-colored rounded squares with labels beneath) */}
       <section className="mt-8">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-between mt-10 mb-5 px-3 md:px-20">
-            <h3 className="text-md font-semibold text-primary">
-              Quick Actions
-            </h3>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-5 flex items-end justify-between px-1 sm:mb-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Get things done
+              </p>
+              <h3 className="mt-1 text-xl font-bold tracking-tight text-foreground">
+                Quick actions
+              </h3>
+            </div>
             {/* <Link href="/dashboard" className="text-sm text-muted-foreground">
               See all
             </Link> */}
           </div>
 
-          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             {[
               { title: "Data", key: "datap" },
               { title: "Airtime", key: "airtime" },
@@ -308,12 +301,12 @@ function DashClient() {
               // { title: "USSD", key: "ussd" },
             ].map((s) => (
               <Link key={s.key} href={`/dashboard/${s.key}`} className="group">
-                <div className="flex flex-col items-center text-center cursor-pointer">
+                <div className="flex min-h-36 flex-col items-center justify-center rounded-2xl border border-border bg-card px-3 py-5 text-center shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-md sm:min-h-40">
                   <div
                     role="button"
                     tabIndex={0}
                     aria-label={s.title}
-                    className="w-14 h-14 rounded-full bg-gradient-to-r from-white to-primary-50 flex items-center justify-center text-primary-800 shadow-md transition-transform duration-200 group-hover:scale-105"
+                    className="flex size-12 items-center justify-center rounded-2xl bg-primary/5 text-primary transition-colors group-hover:bg-primary/10 sm:size-14"
                   >
                     {/* Icons use currentColor so they inherit the white color */}
                     {s.key === "datap" && (
@@ -455,7 +448,7 @@ function DashClient() {
                     )}
                   </div>
 
-                  <div className="text-xs md:text-sm font-semibold text-primary-800 mt-2">
+                  <div className="mt-3 text-sm font-semibold text-foreground">
                     {s.title}
                   </div>
                 </div>
@@ -465,43 +458,43 @@ function DashClient() {
         </div>
       </section>
 
-      <div className="mt-12">
+      <div className="mx-auto mt-8 max-w-6xl sm:mt-10">
         {/* <DashSlide /> */}
         <img
           src="/3.png"
           alt="Ad Image"
-          className="w-full mx-auto rounded-2xl"
+          className="mx-auto w-full rounded-3xl border border-border object-cover shadow-sm"
         />
       </div>
 
       {/* dialog */}
 
       <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
-        <DialogContent className="sm:max-w-md rounded-2xl p-0 overflow-hidden">
+      <DialogContent className="overflow-hidden rounded-3xl border-border p-0 shadow-xl sm:max-w-md">
          
 
-          <img src="/white.png" className="mx-auto h-12 my-2" alt="" />
+          <div className="bg-gradient-to-br from-slate-950 via-[#12386b] to-[#285c9b] px-6 py-7 text-center text-white">
+            <img src="/white.png" className="mx-auto h-12 object-contain" alt="" />
+            <DialogHeader className="mt-4 space-y-2 text-center">
+              <DialogTitle className="text-xl font-bold text-white">Welcome to SDC Smart Data</DialogTitle>
+              <DialogDescription className="text-sm leading-6 text-blue-100/80">
+                {welcomeMessage || "We are glad to have you here."}
+              </DialogDescription>
+            </DialogHeader>
+          </div>
 
-          <div className="p-6 space-y-4 text-xs">
-            <p>
-             {welcomeMessage || "Welcome to SDC Smart Data Sub. We are glad to have you here."}
-              <br />
-              <br />
-             
-            </p>
-
-            <div className="pt-4  gap-3">
+          <DialogFooter className="p-6 pt-5">
               <Button
-                className="w-full"
+                className="h-11 w-full rounded-xl"
                 onClick={() => setShowSuccessModal(false)}
               >
                 Okay Thanks
               </Button>
-            </div>
-          </div>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
       {/* end dialog */}
+      </div>
     </main>
   );
 }

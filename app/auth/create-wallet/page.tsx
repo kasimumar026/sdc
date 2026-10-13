@@ -1,10 +1,5 @@
 "use client";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import ApiClient from "@/lib/API";
 // import apiClient from "@/lib/apiClient";
 import { useRouter } from "next/navigation";
@@ -17,26 +12,25 @@ const CreateWallet = () => {
   const [loading, setLoading] = useState(false);
 
   const createWallet = async () => {
-    if (code === "") return;
-
     if (code.length !== 4) {
       toast.error("PIN must be 4 digits");
       return;
     }
     setLoading(true);
-    const response: any = await ApiClient.post("/wallet/create", {
-      pin:code,
-    })
-      .then((responseData) => {
-        setLoading(false);
-        toast.success("Wallet Created Successfully");
-        router.push("/dashboard");
-      })
-      .catch((error) => {
-        setLoading(false);
-        toast.error(response.data?.error);
-        setCode("");
-      });
+    try {
+      await ApiClient.post("/wallet/create", { pin: code });
+      toast.success("Wallet created successfully");
+      router.push("/dashboard");
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.error ||
+          error?.response?.data?.message ||
+          "Could not save your wallet PIN. Please try again.",
+      );
+      setCode("");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,22 +42,22 @@ const CreateWallet = () => {
         <InputOTP
           value={code}
           onChange={(e: string) => setCode(e)}
-          maxLength={6}
+          maxLength={4}
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
             <InputOTPSlot index={2} />
             <InputOTPSlot index={3} />
-            
           </InputOTPGroup>
         </InputOTP>
       </div>
       <button
         className={` px-4 py-2 w-[220px] rounded-md cursor-pointer text-sm bg-primary text-white`}
         onClick={() => createWallet()}
+        disabled={loading || code.length !== 4}
       >
-        {loading ? "Loading..." : "Create Wallet"}
+        {loading ? "Setting up wallet..." : "Create Wallet"}
       </button>
 
      

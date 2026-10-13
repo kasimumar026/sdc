@@ -25,7 +25,7 @@ const walletSchema = new mongoose.Schema(
     },
     pin: {
       type: String,
-      required: true,
+      required: false,
     },
 
     account_number: {
@@ -57,13 +57,25 @@ const walletSchema = new mongoose.Schema(
     paymentPoint: {
       type: Object,
       required: false,
-    }
+    },
+    billstack: {
+      type: Object,
+      required: false,
+    },
       
         
   },
 
   { timestamps: true },
 );
+
+// Replace an older compiled model during development after schema changes.
+// Mongoose otherwise keeps the first registered schema (which may still
+// require a PIN during account registration).
+const existingWalletModel = mongoose.models["Wallet"];
+if (existingWalletModel?.schema.path("pin")?.isRequired) {
+  mongoose.deleteModel("Wallet");
+}
 
 export default mongoose.models["Wallet"] ||
   mongoose.model("Wallet", walletSchema);
