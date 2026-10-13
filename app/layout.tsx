@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import InstallPrompt from "./InstallPrompt";
 
 export const metadata: Metadata = {
-  title: "SDC Smart Data Subscription",
+  title: "SDC Smart Data Subscription....",
   description: "Subscribe to data updates from SDC",
 };
 
