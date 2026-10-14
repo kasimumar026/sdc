@@ -531,6 +531,41 @@ const buyWithSMEPlug = async (data: any) => {
 };
 
 /**
+ * Provider: Arewa247 Partner API
+ */
+const buyWithArewa247 = async (data: any) => {
+  const apiKey = process.env.AREWA247_API_KEY || data.token;
+  if (!apiKey) {
+    throw new Error("Arewa247 API key is not configured");
+  }
+
+  const planId = Number(data.plan.externalId || data.plan.id);
+  if (!Number.isInteger(planId) || planId <= 0) {
+    throw new Error("A valid Arewa247 data plan ID is required");
+  }
+
+  const response = await axios.post(
+    "https://arewa247.com.ng/api/partner/v1/purchase/data",
+    {
+      network: "mtn",
+      phone: data.phone,
+      plan_id: planId,
+      ported_number: false,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-Key": apiKey,
+        "X-Idempotency-Key": data.customer_reference,
+      },
+      timeout: 15000,
+    },
+  );
+
+  return response.data;
+};
+
+/**
  * Main purchase handler.
  */
 export async function POST(request: NextRequest) {
@@ -936,7 +971,7 @@ export async function POST(request: NextRequest) {
       } else if (providerUrl.includes("smeplug")) {
         apiResponse = await buyWithSMEPlug(payload);
       } else {
-        throw new Error("Unsupported API Provider");
+        apiResponse = await buyWithArewa247(payload);
       }
 
       // ----------------------------------------------
