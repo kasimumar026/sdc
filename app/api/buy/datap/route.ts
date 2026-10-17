@@ -534,22 +534,15 @@ const buyWithSMEPlug = async (data: any) => {
  * Provider: Arewa247 Partner API
  */
 const buyWithArewa247 = async (data: any) => {
-  const apiKey = process.env.AREWA247_API_KEY || data.token;
-  if (!apiKey) {
-    throw new Error("Arewa247 API key is not configured");
-  }
-
-  const planId = Number(data.plan.externalId || data.plan.id);
-  if (!Number.isInteger(planId) || planId <= 0) {
-    throw new Error("A valid Arewa247 data plan ID is required");
-  }
+  const apiKey = "AREWA247-API-KEY-9e3f1c8b0a5d4e2f8b6c7d9e1a2b3c4d";
+ 
 
   const response = await axios.post(
     "https://arewa247.com.ng/api/partner/v1/purchase/data",
     {
-      network: "mtn",
+      network: "MTN",
       phone: data.phone,
-      plan_id: planId,
+      plan_id: 8,
       ported_number: false,
     },
     {
