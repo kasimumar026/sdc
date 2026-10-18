@@ -324,7 +324,7 @@ export default function EditPage() {
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => router.push("/admin/data-table")}
+                    onClick={() => router.push("/admin/data-p")}
                   >
                     Cancel
                   </Button>

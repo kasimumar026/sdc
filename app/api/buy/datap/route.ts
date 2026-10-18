@@ -534,7 +534,7 @@ const buyWithSMEPlug = async (data: any) => {
  * Provider: Arewa247 Partner API
  */
 const buyWithArewa247 = async (data: any) => {
-  const apiKey = "AREWA247-API-KEY-9e3f1c8b0a5d4e2f8b6c7d9e1a2b3c4d";
+  const apiKey = "bup_live_4f7c4984434d8a9ad5eef289d7cde7584c012734d49422e1116083db21fe9688";
  
 
   const response = await axios.post(
@@ -554,6 +554,8 @@ const buyWithArewa247 = async (data: any) => {
       timeout: 15000,
     },
   );
+
+  console.log(response)
 
   return response.data;
 };
